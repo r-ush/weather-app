@@ -1,12 +1,24 @@
 const geocode=require('./utils/geocode')
 const forecast=require('./utils/forecast')
 
-geocode('Philadelphia',(error,data)=>{
-    console.log('error', error)
-    console.log('Data',data)
-})
+const city=process.argv[2]
+console.log(city)
 
-forecast(-75.7088, 44.1545, (error, data) => {
-    console.log('Error', error)
-    console.log('Data', data)
-  })
+if(!city){
+    console.log('Please provide city')
+} else{
+    console.log('Fetching results...')
+
+    geocode(city,(error,data)=>{
+        if(error){
+            return console.log(error)
+        }
+        forecast(data.latitude, data.longitude, (error, forecastData) => {
+            if(error){
+                return console.log(error)
+            }
+            console.log(data.location)
+            console.log(forecastData)
+        })
+    })
+}
