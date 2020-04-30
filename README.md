@@ -2,4 +2,8 @@
 
 Created as a project to learn node js.
 
-To test=> <pre>node app.js</pre>
+To install dependencies=> <pre>npm i</pre>
+
+To test=> <pre>node src/app.js</pre>
+
+and open http://localhost:3000/
